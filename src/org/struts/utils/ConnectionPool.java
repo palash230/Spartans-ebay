@@ -8,8 +8,8 @@ public class ConnectionPool {
 
 		public final static String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 		public final static String DB_URL = "jdbc:mysql://localhost/ooad_project";
-		public final static String USER = "root";
-		public final static String PASS = "NEWPASSWORD";
+		public final static String USER = "priyanka";
+		public final static String PASS = "priyanka";
 		public static Connection con=null;
 		public static Connection getConnection()
 		{

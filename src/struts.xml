@@ -10,11 +10,6 @@
             <result name="success" type="redirect">/welcome.jsp</result>
             <result name="error" type="redirect">/sellerLogin.jsp</result>
         </action>
-        <action name="addPrice" class="org.struts.action.PriceAction">
-            
-            <result name="success" type="redirect">/Examo1.jsp</result>
-            <result name="error" type="redirect">/Examo1.jsp</result>
-        </action>
         <action name="deleteSuCat" class="org.struts.action.CallAction" method="deleteSubCat" >
             <result name="success">/deleteSubCat.jsp</result>         
         </action>
@@ -30,6 +25,11 @@
             <result name="success" >itemManagement.jsp</result>
             <result name="error" type="redirect">/sellerLogin.jsp</result>
         </action>
+        <action name="userLogin" class="org.struts.action.SellerLoginAction" >
+            <result name="success" >AddToCart.jsp</result>
+            <result name="error" type="redirect">/userLogin.jsp</result>
+        </action>
+ 	
  	<action name="addCat" class="org.struts.action.addCatAction" >
             <result name="success" >/success.jsp</result>
             <result name="error" type="redirect">/welcome.jsp</result>
@@ -78,10 +78,6 @@
         <action name="updateUser" method="update" class="org.struts.action.RegisterAction">
             <result name="success">/success.jsp</result>
         </action>
-         <action name="myprice" method="execute" class="org.struts.action.Myprice">
-            <result name="success">/Examo1.jsp</result>
-        </action>
-        
         <action name="deleteUser" method="delete" class="org.struts.action.RegisterAction">
             <result name="success">/success.jsp</result>
         </action>
@@ -102,6 +98,38 @@
 			<result name="success">/addItemForm.jsp</result>
 		</action>
 		
+		<action name="cart" class="org.struts.action.CartAction">
+			<result name="success">/cart.jsp</result>
+		</action>
+			<action name="addtocart" class="org.struts.action.AddToCartAction">
+			<result name="success">/AddToCart.jsp</result>
+		</action>
+		
+			<action name="remove" class="org.struts.action.AddToCartAction" method="remove">
+			<result name="success">/AddToCart.jsp</result>
+		</action>
+		
+		<action name="showAddress" class="org.struts.action.displayAddress" >
+            <result name="success">/address.jsp</result>
+         </action>
+           <action name="selectedAddress" class="org.struts.action.displayAddress" >
+            <result name="success">/payment.jsp</result>
+         </action>
+          <action name="addAddress" class="org.struts.action.addAddress" >
+            <result name="success" type="chain">showAddress</result>
+         </action>
+
+	<action name="makePayment" class="org.struts.action.PaymentAction">
+			<result name="success">/paymentSuccessful.jsp</result>
+			<result name="error">/paymentFailure.jsp</result>
+			<result name="index">/payment.jsp</result>
+			
+		</action>
+
+
+		
+	
+	
 	</package>
 	</struts>
 	

@@ -23,7 +23,7 @@ public class ItemByCatService {
 			Statement stmt = ConnectionPool.con.createStatement();
 			System.out.println("tcm.getItemSubCatId()  "+tcm.getItemSubCatId() );
 			System.out.println("tcm.getItemCatId()  "+tcm.getItemCatId());
-			String query="SELECT itemId,item_name,item_desc,price069,seller_id,image,imagePath FROM item069 where itemCatId="+tcm.getItemCatId();
+			String query="SELECT itemId,item_name,item_desc,cost,seller_id,image,imagePath FROM item where itemCatId="+tcm.getItemCatId();
 			if(!tcm.getItemSubCatId().equals(""))
 				query+=" and subCat_id = "+tcm.getItemSubCatId();
 			query+=";";

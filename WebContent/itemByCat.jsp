@@ -33,6 +33,11 @@ function goBack() {
         	<div class="col-sm-5">
 	          <div class="well">
 	  			<div class="well1">
+	  			 <s:url id="cart" action="addtocart" var="myurl">
+	<s:param name="itemId"><s:property value="itemId"/></s:param>
+		<s:param name="SellerId"><s:property value="seller_id"/></s:param>
+		<s:param name="cost"><s:property value="cost"/></s:param>
+</s:url>
 	  			<img src="data:image/jpg;base64,<s:property value="image64encode" />"  style="height:250px;width:450px" class="img-thumbnail" width="100" alt="Image">
 	  			</div>	 
 	  			 <b>Item Id :</b>			
@@ -43,6 +48,8 @@ function goBack() {
 					<b>Cost </b><s:property value="cost"/> <br>
 					<b> Seller Id </b><s:property value="seller_id"/><br>
 	             	<a href="construction.jsp"><button type="button" class="btn btn-default btn-sm"><span class="glyphicon"></span>Buy Now</button></a>
+	         	    <a href="${myurl}"><button type="button" class="btn btn-default btn-sm"><span class="glyphicon"></span>Add to cart</button></a>
+	         
 	          </div>
 	        </div>
 		<%if(count%2==0) {%>

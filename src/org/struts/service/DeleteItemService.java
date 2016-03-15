@@ -14,7 +14,7 @@ public void listItemKey(DeleteModel dm)
 	if(ConnectionPool.con==null)
 		ConnectionPool.con=ConnectionPool.getConnection();
 	Statement stmt = ConnectionPool.con.createStatement();
-	ResultSet rs = stmt.executeQuery("SELECT itemId, item_name,rowItemId from item069");
+	ResultSet rs = stmt.executeQuery("SELECT itemId, item_name,rowItemId from item");
 	while (rs.next()) {
 		  String itemId = rs.getString(1);
 		  String itemName = rs.getString(2);
@@ -37,7 +37,7 @@ public void deleteItem(DeleteModel dm)
 	{
 	if(ConnectionPool.con==null)
 		ConnectionPool.con=ConnectionPool.getConnection();
-		String query="delete from item069 where itemId='"+dm.getItemId()+"';";
+		String query="delete from item where itemId='"+dm.getItemId()+"';";
 		System.out.println("dm.getItemId() "+dm.getItemId());
 		PreparedStatement prepStmt=ConnectionPool.con.prepareStatement(query);
 		prepStmt.executeUpdate(query);

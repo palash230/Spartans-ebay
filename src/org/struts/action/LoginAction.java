@@ -18,7 +18,7 @@ public class LoginAction extends ActionSupport {
         if ("admin".equals(userId) && "password".equals(passwd)) {
         	System.out.println("in if or jmg");
             HttpSession session = ServletActionContext.getRequest().getSession();
-            session.setAttribute("logined","true");
+          session.setAttribute("logined","true");
           session.setAttribute("context", new Date());
           session.setAttribute("user",userId);
           System.out.println("returning success");

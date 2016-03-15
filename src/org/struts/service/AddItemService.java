@@ -3,7 +3,7 @@ package org.struts.service;
 import java.io.*;
 import java.sql.*;
 
-import org.struts.model.AddItemModel;
+import org.struts.model.*;
 import org.struts.utils.ConnectionPool;
 public class AddItemService {
 	
@@ -16,7 +16,7 @@ public class AddItemService {
 			 int catId=0;
 	  			if(ConnectionPool.con==null)
 	  			ConnectionPool.con=ConnectionPool.getConnection();
-	  			String query="INSERT INTO item069(item_name,item_desc,seller_id,image,price069,subCat_Id,field1,field2,advertisementItem,itemId,imagePath,ItemCatId ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+	  			String query="INSERT INTO item(item_name,item_desc,seller_id,image,cost,subCat_Id,field1,field2,advertisementItem,itemId,imagePath,ItemCatId ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 	  			PreparedStatement preparedStmt = ConnectionPool.con.prepareStatement(query);
 	  			preparedStmt.setString (1, am.getItemName());
 	  			preparedStmt.setString (2, am.getItemDesc());
@@ -64,7 +64,7 @@ public class AddItemService {
 	{
 		try
 		{
-		String query1="SELECT count(*) from item069 where itemId=?";
+		String query1="SELECT count(*) from item where itemId=?";
 		PreparedStatement prepStmt=ConnectionPool.con.prepareStatement(query1);
 		prepStmt.setString(1,am.getItemId());
 		ResultSet rs1 = prepStmt.executeQuery();

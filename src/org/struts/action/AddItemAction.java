@@ -2,7 +2,7 @@ package org.struts.action;
 import com.opensymphony.xwork2.ModelDriven;
 
 import org.apache.commons.lang.StringUtils;
-import org.struts.model.AddItemModel;
+import org.struts.model.*;
 import org.struts.service.AddItemService;
 import com.opensymphony.xwork2.ActionSupport;
 

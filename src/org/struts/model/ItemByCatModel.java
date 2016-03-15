@@ -98,6 +98,7 @@ public class ItemByCatModel {
 	}
 
 	public String getCatName() {
+		//System.out.println("here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		return catName;
 	}
 

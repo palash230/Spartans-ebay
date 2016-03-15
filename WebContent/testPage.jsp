@@ -65,19 +65,11 @@
 					<img src="bootstrap/Images/test.png"/>
 					</a>
 				</div>
-				<script>
-  (function() {
-    var cx = '010275942725738192108:j_wuokjfy_u';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-        '//cse.google.com/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();
-</script>
-<gcse:search></gcse:search>
+				<div class="header" id ="header">
+				<ul class="nav navbar-nav">
+				
+				</ul>
+				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
 					<li><a href="itemManagement.jsp">Item Management</a></li> 
@@ -123,10 +115,10 @@
 						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-	    				<li><a href="adminLogin.jsp"> ADMIN | </a></li>
+						<li><a href="addtocart.action"> CART | </a></li>
+						<li><a href="adminLogin.jsp"> ADMIN | </a></li>
 	     				<li><a href="sellerLogin.jsp"> SELLER | </a></li>
 	      				<li><a href="userLogin.jsp"> CUSTOMER | </a></li>
-	      				<li><a href="Examprice.jsp"> Exam01 | </a></li>
 					</ul>
 				</div>
 			</div>

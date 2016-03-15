@@ -64,13 +64,13 @@
 		  Class.forName("com.mysql.jdbc.Driver");
 		  ConnectionPool.getConnection();
 		  Statement stmt=ConnectionPool.con.createStatement();
-		  ResultSet rs=stmt.executeQuery("select item_name,itemId,image,price069 from item069 where advertisementItem='Y'");
+		  ResultSet rs=stmt.executeQuery("select item_name,itemId,image,cost from item where advertisementItem='Y'");
 		    while(rs.next() )
 		    {
 		    	String name = rs.getString("item_name");
 		  		String itemId = rs.getString("itemId");
 		  		Blob pic = rs.getBlob("image");
-		  		int cost=rs.getInt("price069");
+		  		int cost=rs.getInt("cost");
 		  		if(pic!=null)
 				{
 				int blobLength = (int) pic.length();	
@@ -79,13 +79,17 @@
 	%>
 	
 	      			<div class="item">
-	      				<a href="construction.jsp" class="btn-btn-primary"> <img src="data:image/jpg;base64,<%=image64encode%>" height="300px" width="250px"  class="img-responsive" style="width:100%" alt="Image"></a>
+	      			 <s:url id="cart" action="cart" var="myurl">
+	<s:param name="user"> <%=itemId %></s:param>
+</s:url>
+
+	      				<a href="${myurl}" class="btn-btn-primary"> <img src="data:image/jpg;base64,<%=image64encode%>" height="300px" width="250px"  class="img-responsive" style="width:100%" alt="Image"></a>
 		  			 	<div class="">
 		  			 	<p><b>Item Id  :</b>  <%=itemId %></p>
 	            		<p><b>Item Name:</b>  <%=name %> </p>
 	            		<p><b>Cost      </b> <%=cost %> </p>
-	            	    <a href="construction.jsp" class="btn-btn-primary">BUY</a>
-	        		</div>
+	            		<p><b><a href="construction.jsp" class="btn-btn-primary">BUY</a></b></p>       		
+</div>
 	        	</div>  
 	      <%   } 	
 	 	}
