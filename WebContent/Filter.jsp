@@ -12,19 +12,36 @@ function goBack() {
 }
 function filterprice()
 {
-	document.filter.submit();
+	document.filter1.submit();
 	}
 </script>
+<style>
+.lftnav-lbl {
+    line-height: 30px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    display: block;
+    padding-left: 22px;
+    font-size: 16px;
+}
+.bottom-padding40 {
+    padding-bottom: 40px;
+}
+</style>
 </head>
 <body>
 	<div class="container text-center">
 		<s:action name="test" executeResult="true" />
 		<br><br><br><br><br>
+		<%-- <s:param name="itemCatId"><s:property value="itemCatId"/></s:param> --%>
 		<ul class="breadcrumb">
+			<%-- <s:param name="itemCatId"><s:property value="itemCatId"/></s:param> --%>
 			<li><s:property value="catName"/></li> 
-	  		<s:if test="%{subCatName!=null}">
-	  			<li><s:property value="subCatName"/></li>
-	  		</s:if>
+	  		<s:if test="%{subCatName!=null}"> 
+	  		<%-- <s:param name="itemSubCatId"><s:property value="itemSubCatId"/></s:param>
+	  		     <s:param name="itemCatId"><s:property value="catId"/></s:param> --%>
+	  			<li><s:property value="subCatName"/></li> 
+	  		</s:if> 
 		</ul>
 	</div>
 	<div class="row">
@@ -36,9 +53,11 @@ function filterprice()
 	<label>Price Range</label>
 	</div>
 	<div>
-	<s:form action="filter">
-	<s:hidden name="catId" value="%{itemCatId}"/>
-	<s:hidden name="subcatId" value="%{itemSubCatId}"/>
+	<s:form action="filter1">
+	<%-- <%String catId1=request.getParameter("catId"); %>
+	<%String subcatId1=request.getParameter("subcatId"); %> --%>
+	<s:hidden name="catId" value="%{catId}"/>
+	<s:hidden name="subcatId" value="%{subcatId}"/>
 	<s:hidden name="catName" value="%{catName}"/>
 	<s:hidden name="subCatName" value="%{subCatName}"/>
 	Below 500  <s:checkbox name="checkMe" fieldValue="option1" label="Below 500" onclick="filterprice()"/><br>
@@ -49,9 +68,9 @@ function filterprice()
 	
 	</div>
 	</div>
-	<div class="container">
 	<div class="col-sm-9 col-md-6 col-lg-8">
- 	<%int count=0; %>
+	<div class="container">
+<%int count=0; %>
 		<s:iterator value="itemList" status="rowStatus">
 		<% if((count++)%2==0) {
 		%>

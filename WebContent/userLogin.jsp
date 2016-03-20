@@ -9,26 +9,57 @@ function goBack() {
     window.history.back();
 }
 </script>
-<title>Login Page</title>
+<title>Login|Registration Page</title>
 </head>
 <body>
 <div class="container text-center">
 <s:action name="test" executeResult="true" />
 <br><br><br><br><br>
+
+<br>
+
+<div id="userlogin" style="margin-left:250px;float:left;">
 <div class="panel panel-default">
 	<div class="panel-heading"> <strong class="">User Login</strong>
 	</div>
 </div>
-<br>
     <s:form action="UserLogin" name="userLogin">
-        User Name  <s:textfield name="userId"  property="userId" />
+        Email Id <s:textfield name="emailId"  property="emailId" />
         <br><br>
         Password   <s:password name="passwd"  property="passwd" />
         <br><br>
-    <s:submit value="Previous" class="btn btn-primary" onCLick="goBack()"/>
-	<s:submit value="Login"  class="btn btn-primary"/>
-	<s:submit value="Home" action="homePageAction" name="home" class="btn btn-primary" />
-	</s:form>
+         <a href="reset.jsp">Forgot your password?</a>
+        <s:submit value="Login"  class="btn btn-primary"/> 
+      
+        
+        	</s:form>
+  	</div>
+  	<div id="userlogin" style="margin-right:250px;float:right;">
+  	<div class="panel panel-default">
+	<div class="panel-heading"> <strong class="">Registration</strong>
 	</div>
+</div>
+    <s:form action="UserRegister" name="userRegister">
+        Email  <s:textfield name="email"  property="email" />
+        <br><br>
+        Reenter Email   <s:textfield name="reemail"  property="reemail" />
+        <br><br>
+        Password   <s:password name="password"  property="password" />
+          <br><br>
+        First Name   <s:textfield name="fname"  property="fname" />
+          <br><br>
+        Last Name   <s:textfield name="lname"  property="lname" />
+             <br><br>
+        <s:submit value="Register"  class="btn btn-primary"/>
+        	</s:form>
+  	</div>
+
+  <div style="margin-top:400px;">
+    <s:submit value="Previous" class="btn btn-primary" onCLick="goBack()"/>
+	
+	<s:submit value="Home" action="homePageAction" name="home" class="btn btn-primary" />
+</div>
+	</div>
+
 </body>
 </html>

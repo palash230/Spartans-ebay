@@ -13,17 +13,25 @@ import org.struts.utils.ConnectionPool;
 
 import com.opensymphony.xwork2.*;
 
-public class SellerLoginAction extends ActionSupport {
+public class ForgotAction extends ActionSupport {
         private static final long serialVersionUID = 1L;
-        private String userId;
-        private String passwd;
+        private String emailId;
 
-    public String execute() throws Exception {
+    public String getEmailId() {
+			return emailId;
+		}
+
+		public void setEmailId(String emailId) {
+			this.emailId = emailId;
+		}
+
+	public String execute() throws Exception {
        // System.out.println("hellow"+userId+"--"+passwd);
+		System.out.println("password change requested for"+emailId);
          HttpSession session = ServletActionContext.getRequest().getSession();
          if(ConnectionPool.con==null)
 	  			ConnectionPool.con=ConnectionPool.getConnection();
-         String query="select * from seller where seller_id='"+userId+"' and password='"+passwd+"'";
+         String query="select * from user where emailId='"+emailId+"'";
          PreparedStatement preparedStmt = ConnectionPool.con.prepareStatement(query);
          ResultSet rs=preparedStmt.executeQuery();
        // System.out.println("hellp");
@@ -31,19 +39,9 @@ public class SellerLoginAction extends ActionSupport {
         
       while(rs.next())
       {
-                System.out.println("username:"+userId+"  passwd"+passwd);
-                System.out.println("successssss");
-                session.setAttribute("logined","true");
-                session.setAttribute("context", new Date());
-                session.setAttribute("user", userId);
-                // Better is using ActionContext
-                //Map session = ActionContext.getContext().getSession();
-                //session.put("logined","true");
-                //session.put("context", new Date());
-                System.out.println("returning success");
                 return "success";    
-    }
-      System.out.println("returning error");
+      }
+     // System.out.println("returning error");
       return "error";
   }
 
@@ -52,26 +50,12 @@ public class SellerLoginAction extends ActionSupport {
       session.removeAttribute("logined");
       session.removeAttribute("context");
       session.removeAttribute("user");
+      session.removeAttribute("type");
 //Map session = ActionContext.getContext().getSession();
 //session.remove("logined");
  //     session.remove("context");
       return "success";
   }
 
-  public String getPasswd() {
-      return passwd;
-  }
-
-  public void setPasswd(String passwd) {
-      this.passwd = passwd;
-  }
-
-  public String getUserId() {
-      return userId;
-  }
-
-  public void setUserId(String userId) {
-      this.userId = userId;
-  }
 }
 

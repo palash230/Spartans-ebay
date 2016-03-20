@@ -13,17 +13,25 @@ import org.struts.utils.ConnectionPool;
 
 import com.opensymphony.xwork2.*;
 
-public class SellerLoginAction extends ActionSupport {
+public class UserLoginAction extends ActionSupport {
         private static final long serialVersionUID = 1L;
-        private String userId;
-        private String passwd;
+        private String emailId;
+        public String getEmailId() {
+			return emailId;
+		}
+
+		public void setEmailId(String emailId) {
+			this.emailId = emailId;
+		}
+
+		private String passwd;
 
     public String execute() throws Exception {
        // System.out.println("hellow"+userId+"--"+passwd);
          HttpSession session = ServletActionContext.getRequest().getSession();
          if(ConnectionPool.con==null)
 	  			ConnectionPool.con=ConnectionPool.getConnection();
-         String query="select * from seller where seller_id='"+userId+"' and password='"+passwd+"'";
+         String query="select * from user where emailId='"+emailId+"' and password='"+passwd+"'";
          PreparedStatement preparedStmt = ConnectionPool.con.prepareStatement(query);
          ResultSet rs=preparedStmt.executeQuery();
        // System.out.println("hellp");
@@ -31,11 +39,12 @@ public class SellerLoginAction extends ActionSupport {
         
       while(rs.next())
       {
-                System.out.println("username:"+userId+"  passwd"+passwd);
-                System.out.println("successssss");
+                System.out.println("Email:"+emailId+"  passwd"+passwd);
+               System.out.println("successssss");
                 session.setAttribute("logined","true");
+                session.setAttribute("type", "userType");
                 session.setAttribute("context", new Date());
-                session.setAttribute("user", userId);
+                session.setAttribute("user", emailId);
                 // Better is using ActionContext
                 //Map session = ActionContext.getContext().getSession();
                 //session.put("logined","true");
@@ -66,12 +75,6 @@ public class SellerLoginAction extends ActionSupport {
       this.passwd = passwd;
   }
 
-  public String getUserId() {
-      return userId;
-  }
 
-  public void setUserId(String userId) {
-      this.userId = userId;
-  }
 }
 

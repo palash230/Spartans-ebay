@@ -14,17 +14,17 @@ public class LoginAction extends ActionSupport {
 	private String userId;
     private String passwd;
     public String execute() throws Exception {
-    	System.out.println("userId is  "+userId);
+    	//System.out.println("userId is  "+userId);
         if ("admin".equals(userId) && "password".equals(passwd)) {
-        	System.out.println("in if or jmg");
+        	//System.out.println("in if or jmg");
             HttpSession session = ServletActionContext.getRequest().getSession();
           session.setAttribute("logined","true");
           session.setAttribute("context", new Date());
           session.setAttribute("user",userId);
-          System.out.println("returning success");
+         // System.out.println("returning success");
             return "success";
         }
-        System.out.println("returning error");
+      //  System.out.println("returning error");
         return "error";
     }
  

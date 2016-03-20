@@ -12,7 +12,7 @@ public class RegisterAction extends ActionSupport implements ModelDriven{
 	@SkipValidation
 	public String homePage()
 	{
-		System.out.println("I m returning home??");
+		//System.out.println("I m returning home??");
 		return "home";
 	}
 	
@@ -33,43 +33,43 @@ public class RegisterAction extends ActionSupport implements ModelDriven{
 	}
 	
 	public void validate(){
-		System.out.println("validate method executing!!!! ");
+		//System.out.println("validate method executing!!!! ");
 		if(StringUtils.isEmpty(rm.getSellerId()))
 		{
-			System.out.println("validation checking of sellerid!!!! ");
+			//System.out.println("validation checking of sellerid!!!! ");
 			addFieldError("sellerId", "Seller Id can not be empty");
 			
 		}
 		if(StringUtils.isEmpty(rm.getSellerName()))
 		{
-			System.out.println("validation checking of sellerName!! ");
+			//System.out.println("validation checking of sellerName!! ");
 			addFieldError("sellerName", "seller name can not be empty");
 			
 		}
 		if(StringUtils.isEmpty(rm.getSellerAdd()))
 		{
-			System.out.println("validation checking of sellerAdd!!!! ");
+			//System.out.println("validation checking of sellerAdd!!!! ");
 			addFieldError("sellerAdd", "seller address can not be empty");
 		}
 		if(StringUtils.isEmpty(rm.getPass()))
 		{
-			System.out.println("validation checking of password!!!! ");
+			//System.out.println("validation checking of password!!!! ");
 			addFieldError("password", "Password can not be empty");
 			
 		}
 		if(!rm.getpassword().equals(rm.getPass()))
 		{
-			System.out.println("validation checking of confirm password!!!! ");
+			//System.out.println("validation checking of confirm password!!!! ");
 			addFieldError("ConfirmPassword", "Confirm Password is either empty or it is not matching");
 			
 		}
-		System.out.println("validate method ending!!!! ");
+		//System.out.println("validate method ending!!!! ");
 		
 	}
 	@Override
 	public Object getModel() {
 		// TODO Auto-generated method stub
-		System.out.println("i m callign model");
+		//System.out.println("i m callign model");
 		return rm;
 	}
 

@@ -13,6 +13,9 @@
         <action name="deleteSuCat" class="org.struts.action.CallAction" method="deleteSubCat" >
             <result name="success">/deleteSubCat.jsp</result>         
         </action>
+         <action name="sendtoaction" class="org.struts.action.myaction" method="execute" >
+            <result name="success">/cart.jsp</result>         
+        </action>
         <action name="deleteSubCategory" class="org.struts.action.SubCatAction" method="deleteSubCategory" >
             <result name="success">/deletedSubCategory.jsp</result>         
         </action>
@@ -25,9 +28,15 @@
             <result name="success" >itemManagement.jsp</result>
             <result name="error" type="redirect">/sellerLogin.jsp</result>
         </action>
-        <action name="userLogin" class="org.struts.action.SellerLoginAction" >
-            <result name="success" >AddToCart.jsp</result>
+        <action name="UserLogin" class="org.struts.action.UserLoginAction" >
+            <result name="success" >WelcomeUser.jsp</result>
             <result name="error" type="redirect">/userLogin.jsp</result>
+        </action>
+             <action name="UserRegister" class="org.struts.action.UserRegisterAction" method="executeSubmit">
+            <result name="success" >WelcomeUser.jsp</result>
+            <result name="error" type="redirect">/userLogin.jsp</result>
+            <result name="failure" type="redirect">/userLogin.jsp</result>
+            
         </action>
  	
  	<action name="addCat" class="org.struts.action.addCatAction" >
@@ -44,6 +53,15 @@
             <result name="success" type="redirect">/sellerLogin.jsp</result>
             <result name="ERROR" type="redirect">/sellerLogin.jsp</result>
         </action>
+          <action name="userLogout" class="org.struts.action.LogoutAction" >
+            <result name="success" type="redirect">/userLogin.jsp</result>
+            <result name="ERROR" type="redirect">/userLogin.jsp</result>
+        </action>
+        <action name="forgotpassword" class="org.struts.action.ForgotAction" >
+            <result name="success">/NewPassword.jsp</result>
+            <result name="error" type="redirect">/reset.jsp</result>
+        </action>
+        
 	    
 	    <action name="submitAction" class="org.struts.action.RegisterAction" method="executeSubmit">
 			<result name="success">/registerSuccess.jsp</result>
@@ -126,7 +144,16 @@
 			
 		</action>
 
-
+<action name="filter" class="org.struts.action.FilterAction">
+			<result name="success">/Filter.jsp</result>
+			<result name="input">/Filter.jsp</result>
+			<result name="error">/indexCopy.jsp</result>
+		</action>
+		<action name="filter1" class="org.struts.action.FilterAction">
+			<result name="success">/Filter1.jsp</result>
+			<result name="input">/Filter1.jsp</result>
+			<result name="error">/indexCopy.jsp</result>
+		</action>
 		
 	
 	
