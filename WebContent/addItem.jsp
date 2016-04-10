@@ -8,6 +8,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Add Item | ebay </title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 <script>
 function goBack() {
     window.history.back();
@@ -18,6 +21,7 @@ function goBack() {
   font-weight: light;
   color: red;
 }
+
 body {
     background-color: GhostWhite ;
 }
@@ -29,7 +33,7 @@ h3{
 
     }
     .sell{
-    color:black;
+    color:GhostWhite;
     }
       h4{
     
@@ -58,17 +62,22 @@ h3{
 </head>
 
 <body>
+
 <s:action name="call" executeResult="true">
+
 <div class="container text-center">
-<br><br><br><br>
+
 	<div class="jumbotron">
 		<h2>Sell on Ebay Marketplace</h2>
 		<p class="sell">Join thousands of merchants selling their items on India's largest
 	<br>
-	mobile commerce platform!</p>
+mobile commerce platform!</p>
+	
 	</div>
-	<h5>Seller Id Logged in is <%=session.getAttribute("user") %></h5>
-	<a href="logout.action">Logout</a>
+	
+	<br>
+	<br>
+	
 </div>
 </s:action>
 </body>

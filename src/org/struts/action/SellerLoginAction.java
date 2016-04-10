@@ -19,7 +19,7 @@ public class SellerLoginAction extends ActionSupport {
         private String passwd;
 
     public String execute() throws Exception {
-       // System.out.println("hellow"+userId+"--"+passwd);
+        System.out.println("hellow");
          HttpSession session = ServletActionContext.getRequest().getSession();
          if(ConnectionPool.con==null)
 	  			ConnectionPool.con=ConnectionPool.getConnection();
@@ -36,6 +36,7 @@ public class SellerLoginAction extends ActionSupport {
                 session.setAttribute("logined","true");
                 session.setAttribute("context", new Date());
                 session.setAttribute("user", userId);
+                session.setAttribute("type", "seller");
                 // Better is using ActionContext
                 //Map session = ActionContext.getContext().getSession();
                 //session.put("logined","true");

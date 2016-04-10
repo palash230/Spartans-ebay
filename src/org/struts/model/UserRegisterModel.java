@@ -2,6 +2,7 @@ package org.struts.model;
 
 public class UserRegisterModel {
 	private String email,reemail,fname,lname,password;
+	private String phone_no,userId,dob;
 
 	public String getEmail() {
 		return email;
@@ -41,6 +42,30 @@ public class UserRegisterModel {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getDob() {
+		return dob;
+	}
+
+	public void setDob(String dob) {
+		this.dob = dob;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getPhone_no() {
+		return phone_no;
+	}
+
+	public void setPhone_no(String phone_no) {
+		this.phone_no = phone_no;
 	}
 	
 

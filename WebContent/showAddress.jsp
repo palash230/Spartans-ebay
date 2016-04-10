@@ -8,7 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-helllooooo
+
 <s:property value="yourAddress"/>
+<a href="sendMail"><s:submit value="send mail"></s:submit></a>
+<br>
+<br>
+<div>
+
+</div>
 </body>
 </html>

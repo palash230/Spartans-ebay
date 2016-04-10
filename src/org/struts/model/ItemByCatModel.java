@@ -5,9 +5,17 @@ public class ItemByCatModel {
 	private String itemCatId,itemSubCatId;
 	private String itemId,itemName,itemDesc,cost,seller_id,imagePath,image64encode;
 	private String catName,subCatName;
+	private int quantity;
 	private Blob photo;
+	
 	private byte[] blobAsBytes;
 	private ArrayList<ItemByCatModel> itemList;
+	private ArrayList<ItemByCatModel> itemList2;
+
+	private String dealflag;
+	private int discount;
+	private String expiryOn;
+	
 	public String getItemId() {
 		return itemId;
 	}
@@ -98,7 +106,6 @@ public class ItemByCatModel {
 	}
 
 	public String getCatName() {
-		//System.out.println("here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		return catName;
 	}
 
@@ -120,5 +127,48 @@ public class ItemByCatModel {
 
 	public void setImage64encode(String image64encode) {
 		this.image64encode = image64encode;
+	}
+	public String getDealFlag()
+	{
+		return dealflag;
+	}
+	public String isDealflag() {
+		return dealflag;
+	}
+
+	public void setDealflag(String dealflag) {
+		this.dealflag = dealflag;
+	}
+
+	public int getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(int discount) {
+		this.discount = discount;
+	}
+
+	public String getExpiryOn() {
+		return expiryOn;
+	}
+
+	public void setExpiryOn(String expiryOn) {
+		this.expiryOn = expiryOn;
+	}
+
+	public ArrayList<ItemByCatModel> getItemList2() {
+		return itemList2;
+	}
+
+	public void setItemList2(ArrayList<ItemByCatModel> itemList2) {
+		this.itemList2 = itemList2;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 }

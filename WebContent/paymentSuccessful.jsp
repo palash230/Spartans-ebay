@@ -1,14 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<style>
+</style>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body background="pic.jpeg">
 Payment Successful!!
-Order has been placed!
-
+<p>Order has been placed!<p>
+<p>Order Status = Payment Successful<p>
+<p>Order id=<s:property value="UUID_Or" /></p>
+<p>Shipping Address=<s:property value="#session.address" /></p>
+<h1>YOU ARE QUALIFIED FOR LAB EXAM!! :)</h1>
 </body>
 </html>

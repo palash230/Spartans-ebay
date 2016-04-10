@@ -2,7 +2,8 @@ package org.struts.action;
 
 public class address {
 	private String contactName,address,city,state,country;
-	private int pincode,phone;
+	private int pincode;
+	private Long phone;
 	public String getContactName() {
 		return contactName;
 	}
@@ -43,11 +44,11 @@ public class address {
 		this.state = state;
 	}
 
-	public int getPhone() {
+	public Long getPhone() {
 		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(Long phone) {
 		this.phone = phone;
 	}
 

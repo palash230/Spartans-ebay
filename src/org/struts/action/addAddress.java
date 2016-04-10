@@ -3,11 +3,15 @@ package org.struts.action;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
 import org.struts.utils.ConnectionPool;
 
 public class addAddress {
 	private String contactName,address,city,state,country;
-	private int pincode,phone;
+	private int pincode;
+	private long  phone;
 	public String getContactName() {
 		return contactName;
 	}
@@ -48,11 +52,11 @@ public class addAddress {
 		this.state = state;
 	}
 
-	public int getPhone() {
+	public long  getPhone() {
 		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(long phone) {
 		this.phone = phone;
 	}
 	public String execute()throws SQLException
@@ -60,20 +64,23 @@ public class addAddress {
 		 if(ConnectionPool.con==null)
 	  			ConnectionPool.con=ConnectionPool.getConnection();
 		 String c ="India";
-		 String query = "insert into address(contactName,addr,pincode,city,state,phone,country)values(?,?,?,?,?,?,?)";
+		 HttpSession session = ServletActionContext.getRequest().getSession();
+		 String query = "insert into address(contactName,addr,pincode,city,state,phone,country,userID)values(?,?,?,?,?,?,?,?)";
 		 PreparedStatement preparedStmt = ConnectionPool.con.prepareStatement(query);
 		  preparedStmt.setString (1, getContactName());
 	      preparedStmt.setString (2, getAddress());
 	      preparedStmt.setInt(3, getPincode());
 	      preparedStmt.setString (4, getCity());
 	      preparedStmt.setString (5, getState());
-	      preparedStmt.setInt(6, getPhone());
+	      preparedStmt.setLong(6, getPhone());
 	      preparedStmt.setString(7, getCountry());
+	      preparedStmt.setString(8,session.getAttribute("user").toString());
 	      preparedStmt.execute();
 
 		return "success";
 	}
-
+	
+	
 	public String getCountry() {
 		return country;
 	}

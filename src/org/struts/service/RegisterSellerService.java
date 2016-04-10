@@ -15,6 +15,7 @@ public class RegisterSellerService {
 				if (result != null) {
 					while (result.next()) {
 						if (result.getInt(1) == 1) {
+							System.out.println("bbcudbuwbew"+result.getInt(1));
 							return true;
 						}
 					}
@@ -23,6 +24,8 @@ public class RegisterSellerService {
 				e.printStackTrace();
 			}
 		}
+		System.out.println("bbcudbuwbew  outside");
+
 		return false;
 	}
 	public void registerIntoDataBase(RegisterModel rm)
@@ -31,12 +34,19 @@ public class RegisterSellerService {
   		{
   			if(ConnectionPool.con==null)
   			ConnectionPool.con=ConnectionPool.getConnection();
-  			String query="INSERT INTO seller(name,shipping_address,seller_id,password) VALUES (?, ?, ? ,?)";
+  			String query="INSERT INTO seller(name,shipping_address,seller_id,password,emailid,contactnumber,natureofbusiness,categoryofproducts) VALUES (?, ?, ? ,?, ?, ?, ? ,?)";
   			PreparedStatement preparedStmt = ConnectionPool.con.prepareStatement(query);
   			preparedStmt.setString (1, rm.getSellerName());
   			preparedStmt.setString (2, rm.getSellerAdd());
   			preparedStmt.setString (3, rm.getSellerId());
   			preparedStmt.setString (4, rm.getPass());
+  			preparedStmt.setString (5, rm.getEmail());
+
+  			preparedStmt.setString (6, rm.getContact());
+  			preparedStmt.setString (7, rm.getNature());
+  			preparedStmt.setString (8, rm.getCatProduct());
+
+  			
   			
   			System.out.println("sellerId from service method"+rm.getSellerId()+" password "+rm.getPass());
   			preparedStmt.execute();

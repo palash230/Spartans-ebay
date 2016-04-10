@@ -45,6 +45,7 @@ public class UserLoginAction extends ActionSupport {
                 session.setAttribute("type", "userType");
                 session.setAttribute("context", new Date());
                 session.setAttribute("user", emailId);
+                session.setAttribute("type", "user");
                 // Better is using ActionContext
                 //Map session = ActionContext.getContext().getSession();
                 //session.put("logined","true");

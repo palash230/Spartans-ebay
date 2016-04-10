@@ -10,8 +10,12 @@ public class PaymentAction extends ActionSupport implements ModelDriven{
 	PaymentModel pm = new PaymentModel();
 	public String execute(){
 		PaymentService ps=new PaymentService();
+		
 		if(ps.checkCardInfo(pm))
+		{	sendMail sm=new sendMail();
+			sm.execute();
 		     return SUCCESS;
+		}
 		return ERROR;
 	}
 

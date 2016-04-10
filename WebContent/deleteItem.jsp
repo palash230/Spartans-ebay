@@ -24,6 +24,7 @@ width:150px;
 } 
 </style>
 <script>
+
 function goBack() {
     window.history.back();
 }
@@ -39,16 +40,32 @@ function goBack() {
 <h5>Seller Id Logged in is <%=session.getAttribute("user") %></h5>
 	<a href="logout.action">Logout</a>
 <br><br><br><br><br>
-<s:form method="post" action="deleteItemAction" label="A sample horizontal Form" >
-  <div class="form-group">Item key :
-  <s:doubleselect value="itemKey" 
-  	name="itemId" headerValue="Select Item Name" 
-  	headerKey="0" list="itemIdList1" listValue="itemId" 
-  	listKey="itemId" doubleName="test" doubleList="itemName" 
-  	doubleCssClass="dropdown" ></s:doubleselect>
+<s:form method="post" action="deleteItemAction"  label="A sample horizontal Form" >
+  <div class="form-group">Item Id :
+	<s:select id="itemId" name="itemId"
+	   list="itemIdList1" listValue="itemId" listKey="itemId"
+	   headerKey="0" headerValue="Select Item Id" />
+	<br>
+	<script type="text/javascript">
+                              $(document).ready(function() {
+                              	   $('#itemId').change(function(event) {
+                              	          var itemIdo = $("select#itemId").val();
+                              	          $.getJSON('ajaxAction1', 
+                              	        		{'itemId': itemIdo}, function(jsonResponse) {
+                              	        	$("#itemName").val(jsonResponse.itemName);        	            
+                              	          });
+                              	         })
+                              });
+                              
+                           </script>	
+	<br>
+	Item Name :<s:textfield id="itemName" name="itemName" disabled="true"/>
+  	
+  	
   <s:fielderror>
   	<s:param>itemId</s:param>
   </s:fielderror>
+  
   <br>
   <br>  
   <s:submit value="Previous" class="btn btn-primary" onClick="goBack()"/>

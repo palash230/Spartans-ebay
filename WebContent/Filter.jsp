@@ -44,7 +44,6 @@ function filterprice()
 	  		</s:if> 
 		</ul>
 	</div>
-	<div class="row">
 	
 	<div class="col-sm-3 col-md-6 col-lg-2">
 	<div class="leftnav bottom-padding40" id ="leftnav">
@@ -60,9 +59,27 @@ function filterprice()
 	<s:hidden name="subcatId" value="%{subcatId}"/>
 	<s:hidden name="catName" value="%{catName}"/>
 	<s:hidden name="subCatName" value="%{subCatName}"/>
+	<s:if test="%{checkMe!='false'}"> 
+	Below 500  <s:checkbox name="checkMe" fieldValue="option1" label="Below 500" onclick="filterprice()" checked="true"/><br>
+	</s:if>
+	<s:else>
 	Below 500  <s:checkbox name="checkMe" fieldValue="option1" label="Below 500" onclick="filterprice()"/><br>
-	500-1000   <s:checkbox name="checkMe1" fieldValue="option2" label="500-1000" onclick="filterprice()"/><br> 
-	Above 1000 <s:checkbox name="checkMe2" fieldValue="option3" label="Above 1000" onclick="filterprice()"/>
+	</s:else>
+	<s:if test="%{checkMe1!='false'}"> 
+	500-1000   <s:checkbox name="checkMe1" fieldValue="option2" label="500-1000" onclick="filterprice()" checked="true"/> <br>
+	</s:if>
+	<s:else>
+	500-1000   <s:checkbox name="checkMe1" fieldValue="option2" label="500-1000" onclick="filterprice()"/> <br>
+	</s:else>
+	<s:if test="%{checkMe2!='false'}">
+	Above 1000 <s:checkbox name="checkMe2" fieldValue="option3" label="Above 1000" onclick="filterprice()" checked="true"/><br>
+	</s:if>
+	<s:else>
+	Above 1000 <s:checkbox name="checkMe2" fieldValue="option3" label="Above 1000" onclick="filterprice()"/><br>
+	</s:else>
+	<label>Color</label>
+	<s:textfield id="color" name="color"></s:textfield>
+	<s:submit action="filter" value="Choosecolor"></s:submit>
 	</s:form>
 	</div>
 	
@@ -80,9 +97,9 @@ function filterprice()
 	          <div class="well">
 	  			<div class="well1">
 	  			 <s:url id="cart" action="addtocart" var="myurl">
-	<s:param name="itemId"><s:property value="itemId"/></s:param>
-		<s:param name="SellerId"><s:property value="seller_id"/></s:param>
-		<s:param name="cost"><s:property value="cost"/></s:param>
+				<s:param name="itemId"><s:property value="itemId"/></s:param>
+				<s:param name="SellerId"><s:property value="seller_id"/></s:param>
+				<s:param name="cost"><s:property value="cost"/></s:param>
 </s:url>
 	  			<img src="data:image/jpg;base64,<s:property value="image64encode" />"  style="height:250px;width:450px" class="img-thumbnail" width="100" alt="Image">
 	  			</div>	 
@@ -93,6 +110,7 @@ function filterprice()
 					<b>Item Description </b><s:property value="itemDesc"/><br>
 					<b>Cost </b><s:property value="cost"/> <br>
 					<b> Seller Id </b><s:property value="seller_id"/><br>
+					<b> Discount </b><s:property value="discount"/><br>
 	             	<a href="construction.jsp"><button type="button" class="btn btn-default btn-sm"><span class="glyphicon"></span>Buy Now</button></a>
 	         	    <a href="${myurl}"><button type="button" class="btn btn-default btn-sm"><span class="glyphicon"></span>Add to cart</button></a>
 	         

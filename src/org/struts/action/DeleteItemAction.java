@@ -1,15 +1,8 @@
 
 package org.struts.action;
-
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
-
 import org.apache.struts2.interceptor.validation.SkipValidation;
 import org.struts.model.DeleteModel;
 import org.struts.service.DeleteItemService;
-import org.struts.utils.ConnectionPool;
-
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -23,6 +16,7 @@ public class DeleteItemAction extends ActionSupport  implements ModelDriven<Dele
 			DeleteItemService ds=new DeleteItemService();
 			ds.listItemKey(dm);
 			return "success";
+			
 		}
 
 		public String itemDeleteSubmit()
@@ -52,5 +46,9 @@ public class DeleteItemAction extends ActionSupport  implements ModelDriven<Dele
 			System.out.println("calling model in delete");
 			return dm;
 		}
-	
+		public String readItemId()
+		{
+			return "success";
+		}
+		
 }

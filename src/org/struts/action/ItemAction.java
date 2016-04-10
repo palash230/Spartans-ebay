@@ -1,9 +1,6 @@
 package org.struts.action;
 
 
-import org.struts.model.*;
-import org.struts.service.DeleteItemService;
-
 import com.opensymphony.xwork2.ActionSupport;
 public  class ItemAction extends ActionSupport{
 	private int itemOption;

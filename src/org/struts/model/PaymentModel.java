@@ -1,7 +1,9 @@
 package org.struts.model;
 
+import java.util.UUID;
+
 public class PaymentModel {
-	private String holderName,cardNumber,cvv,expMonth,expYear;
+	private String holderName,cardNumber,cvv,expMonth,expYear,UUID_Or,UUID_Pay;
 
 	public String getCvv() {
 		return cvv;
@@ -41,6 +43,23 @@ public class PaymentModel {
 
 	public void setExpYear(String expYear) {
 		this.expYear = expYear;
+	}
+
+	public String getUUID_Or() {
+		return UUID_Or;
+	}
+
+	public void setUUID_Or() {
+		UUID_Or = UUID.randomUUID().toString();
+		
+	}
+
+	public String getUUID_Pay() {
+		return UUID_Pay;
+	}
+
+	public void setUUID_Pay() {
+		 UUID_Pay = UUID.randomUUID().toString();
 	}
 	
 	

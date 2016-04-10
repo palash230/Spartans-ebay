@@ -19,19 +19,56 @@ public class FilterService {
 		if(ConnectionPool.con==null)
 			ConnectionPool.con=ConnectionPool.getConnection();
 		Statement stmt = ConnectionPool.con.createStatement();
-		System.out.println("tcm.getItemSubCatId()  "+fsm.getCheckMe());
-		System.out.println("tcm.getItemCatId()  "+fsm.getCheckMe1());
-		String query="SELECT itemId,item_name,item_desc,cost,seller_id,image,imagePath FROM item where ItemCatId="+fsm.getCatId();
-		if(!fsm.getCheckMe().equals("false"))
-			query+=" and (cost < 500)";
-		else if(!fsm.getCheckMe1().equals("false"))
-			query+=" and (cost >=500 and cost <=1000)";
-		else 
-			query+=" and (cost >1000)";
+		System.out.println(fsm.getCheckMe());
+		System.out.println(fsm.getCheckMe1());
+		System.out.println(fsm.getCheckMe2());
+		String query="SELECT itemId,item_name,item_desc,cost,seller_id069,image,imagePath,dealFlag,discount,quantity FROM item where ItemCatId="+fsm.getCatId();
+		if((!fsm.getCheckMe().equals("false"))&&(!fsm.getCheckMe1().equals("false"))&&(!fsm.getCheckMe2().equals("false")))
+		{
+			System.out.println("Heel gaya");
+		}
+		else
+		{
+			System.out.println("Hi Heelo");
+			if((!fsm.getCheckMe().equals("false"))&&(!fsm.getCheckMe1().equals("false")))
+			{
+				query+=" and (cost <=1000)";	
+			}
+			else if((!fsm.getCheckMe().equals("false"))&&(!fsm.getCheckMe2().equals("false")))
+			{
+				query+=" and (cost <500 and cost >1000)";
+			}
+			else if((!fsm.getCheckMe1().equals("false"))&&(!fsm.getCheckMe2().equals("false")))
+			{
+				query+=" and (cost >=500)";
+			}
+			else
+			{
+				if(!fsm.getCheckMe().equals("false"))
+				{
+					query+=" and (cost < 500)";
+					System.out.println("hi cost<500");
+				}
+				if(!fsm.getCheckMe1().equals("false"))
+				{
+					query+=" and (cost >=500 and cost <=1000)";
+					System.out.println("hi cost<500>1000");
+				}
+				if (!fsm.getCheckMe2().equals("false"))
+				{
+					query+=" and (cost >1000)";
+				}
+				
+			}
+		}
+		if(!fsm.getColor().equals(""))
+		{
+			query+=" and color="+"'"+fsm.getColor()+"'";
+		}
 		if(!fsm.getSubcatId().equals(""))
 			query+=" and subCat_id = "+fsm.getSubcatId();
 		query+=";";
-		/*System.out.println(" query"+query+" ~~~tcm.getItemSubCatId()"+tcm.getItemSubCatId());*/
+		System.out.println(" query"+query);
 		ResultSet rs = stmt.executeQuery(query);
 		fsm.setItemList(new ArrayList<Filtermodel>());
 		while (rs.next()) {
@@ -50,6 +87,9 @@ public class FilterService {
 				tc.setBlobAsBytes(pic.getBytes(1, blobLength));
 				tc.setImage64encode(new Base64().encodeToString(tc.getBlobAsBytes()));
 				}
+			tc.setDealFlag(rs.getString(8));
+			tc.setDiscount(rs.getInt(9));
+			tc.setQuantity(rs.getInt(10));
 			catModel.add(tc);
 			}
 		}

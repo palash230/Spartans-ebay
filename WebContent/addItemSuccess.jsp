@@ -9,22 +9,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-<script>
-function goBack() {
-    window.history.back();
-}
-</script>
 </head>
 <body>
 <s:action name="test" executeResult="true" />
 <br><br><br><br><br>
 <div class="alert alert-success">
-You have successfully added Item.<s:property value="itemName"/>
- 
+You have successfully added Item.<s:property value="itemName"/> 
 </div>
-<s:form>
-<s:submit value="Previous" class="btn btn-primary" onClick="goBack()"/>
-<s:submit value="Home" action="homePageAction" name="home" class="btn btn-primary" />
-</s:form>
 </body>
 </html>

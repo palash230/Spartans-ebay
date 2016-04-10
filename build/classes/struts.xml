@@ -5,16 +5,33 @@
     <struts>
     <constant name="struts.ui.theme" value="simple" />
     <constant name="struts.mapper.action.prefix.enabled" value="true"/>
-	<package name="default"  extends="struts-default">    
+	<package name="default"  extends="struts-default, json-default">    
           <action name="login" class="org.struts.action.LoginAction" >
             <result name="success" type="redirect">/welcome.jsp</result>
             <result name="error" type="redirect">/sellerLogin.jsp</result>
         </action>
+         <action name="UserLogin" class="org.struts.action.UserLoginAction" >
+            <result name="success" >WelcomeUser.jsp</result>
+            <result name="error" type="redirect">/userLogin.jsp</result>
+        </action>
+             <action name="UserRegister" class="org.struts.action.UserRegisterAction" method="executeSubmit">
+            <result name="success" >WelcomeUser.jsp</result>
+            <result name="error" type="redirect">/userLogin.jsp</result>
+            <result name="failure" type="redirect">/userLogin.jsp</result>
+            
+        </action>
+ 	  <action name="userLogout" class="org.struts.action.LogoutAction" >
+            <result name="success" type="redirect">/userLogin.jsp</result>
+            <result name="ERROR" type="redirect">/userLogin.jsp</result>
+        </action>
+        <action name="forgotpassword" class="org.struts.action.ForgotAction" >
+            <result name="success">/NewPassword.jsp</result>
+            <result name="error" type="redirect">/reset.jsp</result>
+        </action>
+        
+	    
         <action name="deleteSuCat" class="org.struts.action.CallAction" method="deleteSubCat" >
             <result name="success">/deleteSubCat.jsp</result>         
-        </action>
-         <action name="sendtoaction" class="org.struts.action.myaction" method="execute" >
-            <result name="success">/cart.jsp</result>         
         </action>
         <action name="deleteSubCategory" class="org.struts.action.SubCatAction" method="deleteSubCategory" >
             <result name="success">/deletedSubCategory.jsp</result>         
@@ -28,15 +45,9 @@
             <result name="success" >itemManagement.jsp</result>
             <result name="error" type="redirect">/sellerLogin.jsp</result>
         </action>
-        <action name="UserLogin" class="org.struts.action.UserLoginAction" >
-            <result name="success" >WelcomeUser.jsp</result>
+        <action name="userLogin" class="org.struts.action.SellerLoginAction" >
+            <result name="success" >AddToCart.jsp</result>
             <result name="error" type="redirect">/userLogin.jsp</result>
-        </action>
-             <action name="UserRegister" class="org.struts.action.UserRegisterAction" method="executeSubmit">
-            <result name="success" >WelcomeUser.jsp</result>
-            <result name="error" type="redirect">/userLogin.jsp</result>
-            <result name="failure" type="redirect">/userLogin.jsp</result>
-            
         </action>
  	
  	<action name="addCat" class="org.struts.action.addCatAction" >
@@ -53,15 +64,6 @@
             <result name="success" type="redirect">/sellerLogin.jsp</result>
             <result name="ERROR" type="redirect">/sellerLogin.jsp</result>
         </action>
-          <action name="userLogout" class="org.struts.action.LogoutAction" >
-            <result name="success" type="redirect">/userLogin.jsp</result>
-            <result name="ERROR" type="redirect">/userLogin.jsp</result>
-        </action>
-        <action name="forgotpassword" class="org.struts.action.ForgotAction" >
-            <result name="success">/NewPassword.jsp</result>
-            <result name="error" type="redirect">/reset.jsp</result>
-        </action>
-        
 	    
 	    <action name="submitAction" class="org.struts.action.RegisterAction" method="executeSubmit">
 			<result name="success">/registerSuccess.jsp</result>
@@ -77,15 +79,18 @@
 			<result name="home">/indexCopy.jsp</result>		
 			<result name="input">/indexCopy.jsp</result>					
 	    </action>
+	    <action name="deleteAddress" class="org.struts.action.displayAddress" method="deleteAddress">
+			<result name="success">/address.jsp</result>							
+	    </action>
 		<action name="deleteItem" class="org.struts.action.DeleteItemAction" method="itemDeleteSubmit">
 			<result name="success">/itemdeleted.jsp</result>
 			<result name="error">/itemdeletederror.jsp</result>
 			<result name="input" type="chain">DeleteItemAction</result>
 		</action>
-		<action name="itemAction" class="org.struts.action.ItemAction">
-			<result name="Add" type="chain">addItemListAction</result>
-			<result name="Delete" type="chain">DeleteItemAction</result>
-			<result name="input">/indexCopy.jsp</result>
+		 <action name="itemAction" class="org.struts.action.ItemAction">
+		<result name="Add" type="chain">call</result>
+		<result name="Delete" type="chain">DeleteItemAction</result>
+		<result name="input">/indexCopy.jsp</result>
 		</action>
 		<action name="addItemListAction" class="org.struts.action.testAction">
 			<result name="success">/addItem.jsp</result>
@@ -99,12 +104,18 @@
         <action name="deleteUser" method="delete" class="org.struts.action.RegisterAction">
             <result name="success">/success.jsp</result>
         </action>
-		<action name="addItem" class="org.struts.action.AddItemAction" method="execute">
-			<result name="success">/addItemSuccess.jsp</result>
-			<result name="error">/registerFailure.jsp</result>		
-			<result name="input">/addItem.jsp</result>
-			<result name="duplicate">/addItem.jsp</result>	
+		 <action name="addItem" class="org.struts.action.AddItemAction" method="execute">
+		<result name="success">/addItemSuccess.jsp</result>
+		<result name="error">/registerFailure.jsp</result>
+		<result name="input">/addItemform.jsp</result>
+		<result name="duplicate">/addItemform.jsp</result>
 		</action>
+		<action name="myreport" class="org.struts.action.MyReportAction">
+			<result>/Myreport.jsp</result>			
+		</action>
+		<!-- <action name="reportcat1" class="org.struts.action.MyReportAction">
+			<result>/Myreportexam.jsp</result>			
+		</action>	 -->
 		<action name="test" class="org.struts.action.testAction">
 			<result>/testPage.jsp</result>			
 		</action>
@@ -112,10 +123,12 @@
 			<result name="success">/itemByCat.jsp</result>			
 		</action>
 		
-		<action name="call" class="org.struts.action.CallAction">
-			<result name="success">/addItemForm.jsp</result>
+		 <action name="call" class="org.struts.action.AddItemAction" method="displayList">
+		<result name="success">/addItemForm.jsp</result>
 		</action>
-		
+		<action name="rating" class="org.struts.action.Rating">
+		    <result name="success" type="chain">trackOrder</result>
+		</action>
 		<action name="cart" class="org.struts.action.CartAction">
 			<result name="success">/cart.jsp</result>
 		</action>
@@ -143,8 +156,54 @@
 			<result name="index">/payment.jsp</result>
 			
 		</action>
+	 <action name="sendMail" class="org.struts.action.sendMail" >
+            <result name="success">/demoSuccess.jsp</result>
+         </action>
 
-<action name="filter" class="org.struts.action.FilterAction">
+		
+		<action name="trackOrder" class="org.struts.action.TrackOrderAction" >
+		<result name="success" >/trackMyOrder.jsp</result>
+		<result name="error" >/userLogin.jsp</result>
+		</action>
+		<action name="changeMyTrack" class="org.struts.action.TrackOrderAction" method="execute1">
+		<result name="success" >/changeMyOrderStatus.jsp</result>
+		<result name="error" >/sellerLogin.jsp</result> 
+		</action>
+		 <action name="deal" class="org.struts.action.DealAction" >
+			<result name="success">/deal1.jsp</result>
+		</action>
+		 <action name="advertisement" class="org.struts.action.AdvertisementAction">
+		<result name="success">/advertisement1.jsp</result>
+		</action>
+		<action name="ajaxAction" class="org.struts.action.AjaxAction" method="subCatList">
+		<result name="success" type="json">
+		<param name="excludeNullProperties">true</param>
+		<param name="noCache">true</param>
+		</result>
+		</action>
+		 <action name="ajaxAction1" class="org.struts.action.AjaxAction" method="itemNameValue">
+			<result name="success" type="json">
+			<param name="excludeNullProperties">true</param>
+			<param name="noCache">true</param>
+			</result>
+		</action>
+		 <action name="displayItemById" class="org.struts.action.DispalyItemAction">
+		<result name="success">/item.jsp</result>
+		</action>
+		 <action name="dealsAction" class="org.struts.action.dealsAction">
+		<result name="success">/deals.jsp</result>
+		</action> 
+		<action name="itemBySubCatAction" class="org.struts.action.itemBySubCatAction">
+		<result name="success">/itemBySubCat.jsp</result>
+		</action> 
+		<action name="update" class="org.struts.action.AddToCartAction" method="update">
+			<result name="success">/AddToCart.jsp</result>
+		</action>
+		<action name="status" class="org.struts.action.StatusAction">
+			<result name="success">/success.jsp</result>
+			
+		</action>
+		<action name="filter" class="org.struts.action.FilterAction">
 			<result name="success">/Filter.jsp</result>
 			<result name="input">/Filter.jsp</result>
 			<result name="error">/indexCopy.jsp</result>
@@ -155,8 +214,13 @@
 			<result name="error">/indexCopy.jsp</result>
 		</action>
 		
-	
-	
+		<action name="quantity" class="org.struts.action.AddToCartAction" method="update">
+			<result name="success">/quantity.jsp</result>
+			</action>
+			<action name="reportAction" class="org.struts.action.ReportAction">
+		<result name="success">/report.jsp</result>
+		</action>
+		
 	</package>
 	</struts>
 	

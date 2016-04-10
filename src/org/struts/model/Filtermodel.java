@@ -10,6 +10,36 @@ public class Filtermodel {
 	String checkMe2;
 	String catId;
 	String subcatId;
+	String color;
+	int discount;
+	String dealFlag;
+	int quantity;
+	public int getDiscount() {
+		return discount;
+	}
+	public void setDiscount(int discount) {
+		this.discount = discount;
+	}
+	public String getDealFlag() {
+		return dealFlag;
+	}
+	public void setDealFlag(String dealFlag) {
+		this.dealFlag = dealFlag;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	public String getColor()
+	{
+		return color;
+	}
+	public void setColor(String color)
+	{
+		this.color=color;
+	}
 	public String getSubcatId() {
 		return subcatId;
 	}

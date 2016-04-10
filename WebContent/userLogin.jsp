@@ -50,6 +50,13 @@ function goBack() {
           <br><br>
         Last Name   <s:textfield name="lname"  property="lname" />
              <br><br>
+             User Id   <s:textfield name="userId"  property="userId" />
+         <br><br>
+          Phone no  <s:textfield name="phone_no"  property="phone_no" />
+          <br><br>
+          Date of Birth  <s:textfield name="dob" value="YYYY/MM/DD"  property="dob" />
+
+             
         <s:submit value="Register"  class="btn btn-primary"/>
         	</s:form>
   	</div>
@@ -57,7 +64,7 @@ function goBack() {
   <div style="margin-top:400px;">
     <s:submit value="Previous" class="btn btn-primary" onCLick="goBack()"/>
 	
-	<s:submit value="Home" action="homePageAction" name="home" class="btn btn-primary" />
+	<s:submit action="homePageAction" value="Home" class="btn btn-primary" />
 </div>
 	</div>
 

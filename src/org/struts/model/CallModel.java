@@ -1,55 +1,48 @@
 package org.struts.model;
 import java.util.*;
-class Item
+public class CallModel
 {
-	private String itemId;
-	private ArrayList<String> itemName; 
-	Item(String itemId,ArrayList<String> itemName)
+	private String categoryId;
+	private String categoryName;
+	private ArrayList<CategoryModel> categoryList; 
+	//private ArrayList<SubCatModel> subCatList;
+	private Map<String,String> subCatList;
+	public String getCategoryId() {
+		return categoryId;
+	}
+	public void setCategoryId(String categoryId) {
+		this.categoryId = categoryId;
+	}
+	public ArrayList<CategoryModel> getCategoryList() {
+		return categoryList;
+	}
+	public void setCategoryList(ArrayList<CategoryModel> categoryList) {
+		this.categoryList = categoryList;
+	}
+	
+	public void addCategoryList(String categoryId,String categoryName)
 	{
-		this.itemId=itemId;
-		this.itemName=itemName;
+		if(categoryList==null)
+			categoryList=new ArrayList<CategoryModel>();
+		CategoryModel cm=new CategoryModel(categoryId,categoryName,null);
+		categoryList.add(cm);
 	}
-
-	public ArrayList<String> getItemName() {
-		return itemName;
+	
+	public String getCategoryName() {
+		return categoryName;
 	}
-	public void setItemName(ArrayList<String> itemName) {
-		this.itemName = itemName;
+	
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
-	public String getItemId() {
-		return itemId;
+	public Map<String,String> getSubCatList() {
+		return subCatList;
 	}
-	public void setItemId(String itemId) {
-		this.itemId = itemId;
+	public void setSubCatList(Map<String,String> subCatList) {
+		this.subCatList = subCatList;
 	}
+	
+	
 }
-public class CallModel{
-	private ArrayList<Item> itemIdList1;
-	private ArrayList<String> itemName;
-	
-	public ArrayList<Item> getItemIdList1() {
-		return itemIdList1;
-	}
-	
-	public void setItemIdList1(ArrayList<Item> itemIdList1) {
-		this.itemIdList1 = itemIdList1;
-	}
-	public void addItemIdList(String itemId,ArrayList<String> itemName) {
-		Item it=new Item(itemId,itemName);
-		if(itemIdList1==null)
-			{
-			itemIdList1=new ArrayList<Item>();
-			}
-		this.itemIdList1.add(it);
-	}
-	
 
-	public ArrayList<String> getItemName() {
-		return itemName;
-	}
 
-	public void setItemName(ArrayList<String> itemName) {
-		this.itemName = itemName;
-	}
-	 	 
-}

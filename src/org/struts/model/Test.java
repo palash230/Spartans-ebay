@@ -4,9 +4,9 @@ import java.sql.Blob;
 
 public class Test {
 		private String itemCatId,itemSubCatId;
-		private String itemId,itemName,itemDesc,cost,seller_id,imagePath,image64encode;
+		private String itemId,itemName,itemDesc,seller_id,imagePath,image64encode;
 		private String catName,subCatName;
-	private int quantity;
+	private int quantity,cost;
 		private Blob photo;
 		private byte[] blobAsBytes;
 		public String getItemId() {
@@ -33,14 +33,7 @@ public class Test {
 			this.itemDesc = itemDesc;
 		}
 
-		public String getCost() {
-			return cost;
-		}
-
-		public void setCost(String cost) {
-			this.cost = cost;
-		}
-
+		
 		public String getSeller_id() {
 			return seller_id;
 		}
@@ -122,6 +115,14 @@ public class Test {
 
 		public void setQuantity(int quantity) {
 			this.quantity = quantity;
+		}
+
+		public int getCost() {
+			return cost;
+		}
+
+		public void setCost(int cost) {
+			this.cost = cost;
 		}
 
 	

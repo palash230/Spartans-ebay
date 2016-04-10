@@ -13,6 +13,8 @@ public class displayAddress {
 	private ArrayList<String> addressList = new ArrayList<String>();
 	private String yourAddress;
  	 address add_obj;
+	 HttpSession session = ServletActionContext.getRequest().getSession();
+
 	 
 	public ArrayList<address> getAddrList() {  
 	    return addrList;  
@@ -22,16 +24,17 @@ public class displayAddress {
 	}  
 	public String execute() throws SQLException
 	{
-		
-		HttpSession session = ServletActionContext.getRequest().getSession();
-        String user = session.getAttribute("user").toString();
-        
 		 if(ConnectionPool.con==null)
 	  			ConnectionPool.con=ConnectionPool.getConnection();
 		 
+		 //System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxxx");
+		 HttpSession session = ServletActionContext.getRequest().getSession();
 		 PreparedStatement ps= ConnectionPool.con.prepareStatement("select * from address where userId=?");
+		 //System.out.println(session.getAttribute("user").toString());
 		 
-		 ps.setString(1, user);
+		 //System.out.println("UUUUUUUUUUUUUUUUUUUUUUUU");
+		 
+		 ps.setString(1, session.getAttribute("user").toString());
 		 ResultSet rs=ps.executeQuery();  
 		 while(rs.next())
 		 {
@@ -43,11 +46,11 @@ public class displayAddress {
 			 add_obj.setState(rs.getString(4));
 			 add_obj.setCountry("India");
 			 add_obj.setPincode(rs.getInt(6));
-			 add_obj.setPhone(rs.getInt(7));
+			 add_obj.setPhone(rs.getLong(7));
 			 addrList.add(add_obj);
 		 }
 		 
-		 for(address addr:addrList)
+		for(address addr:addrList)
 		 {
 			 	String str;//full address
 			 	str = addr.getContactName();
@@ -59,9 +62,10 @@ public class displayAddress {
 			 	str = str.concat("\n"+addr.getPhone());
 			 	addressList.add(str);
 		 }
-	
-		 for(String s:addressList)
-			 System.out.println(s);
+		 /*for(String s:addressList)
+			 System.out.println(s);*/
+		 session.setAttribute("address", yourAddress);
+		
 		 return "success";
 		
 	}
@@ -77,5 +81,31 @@ public class displayAddress {
 	public void setYourAddress(String yourAddress) {
 		this.yourAddress = yourAddress;
 	}
-	
+	public String deleteAddress()throws SQLException
+	{
+		
+		String addr=getYourAddress();
+		boolean flag =false;
+		String[] lines;
+
+		  String regex= "\\n";
+		  lines = addr.split(regex);
+		  
+		int l = lines[1].length();
+		String selectedAddr = lines[1].substring(0, l-3);
+		if(lines[1].contains("\n"))
+			flag=true;
+		
+		System.out.println("your address is:"+selectedAddr+"\nyour phone number is"+lines[6]);
+		 if(ConnectionPool.con==null)
+	  			ConnectionPool.con=ConnectionPool.getConnection();
+		 PreparedStatement ps= ConnectionPool.con.prepareStatement("delete from address where addr like ? and phone=?");
+		ps.setString(2,lines[6]);
+		ps.setString(1, "%" + selectedAddr + "%" );
+		ps.executeUpdate();  
+		 System.out.println(flag);
+		return "success";
+		
+	}
+
 }

@@ -1,8 +1,9 @@
 package org.struts.service;
 
 import java.sql.*;
-
+import java.util.Iterator;
 import org.struts.model.DeleteModel;
+import org.struts.model.Items;
 import org.struts.utils.ConnectionPool;
 
 public class DeleteItemService {
@@ -14,12 +15,30 @@ public void listItemKey(DeleteModel dm)
 	if(ConnectionPool.con==null)
 		ConnectionPool.con=ConnectionPool.getConnection();
 	Statement stmt = ConnectionPool.con.createStatement();
+	System.out.println("dm.getItemId() "+ dm.getItemId());
 	ResultSet rs = stmt.executeQuery("SELECT itemId, item_name,rowItemId from item");
 	while (rs.next()) {
 		  String itemId = rs.getString(1);
-		  String itemName = rs.getString(2);
+		  String itemName ="";// rs.getString(2);
 		  System.out.println("Item id is : "+itemId + "\n");
 		  dm.addItemIdList(itemId,itemName,rs.getInt(3));
+		}
+	
+		if(dm.getItemId()!=null)
+		{
+		ResultSet rs1 = stmt.executeQuery("SELECT itemId, item_name,rowItemId from item where itemId='"+dm.getItemId()+"';");
+		System.out.println("dm.getItemId() --->"+dm.getItemId());
+		while (rs1.next()) {
+			  String itemId = rs1.getString(1);
+			  String itemName = rs1.getString(2);
+			  System.out.println("Item id is here : "+itemId + "\n");
+			  if(itemId.equals(dm.getItemId()))
+				  {
+				  dm.setItemName(itemName);
+				  
+				  }
+			  //System.out.println(dm.getItemIdList1().size());
+			}
 		}
 	}
 	 catch (SQLException e1) {

@@ -4,6 +4,17 @@ public class CategoryModel {
 	private String catName;
 	private String catId;
 	private ArrayList<SubCatModel> subCatList;
+	
+	public CategoryModel()
+	{
+		
+	}
+	CategoryModel(String catId,String catName,ArrayList<SubCatModel> subCatList)
+	{
+		this.catId=catId;
+		this.catName=catName;
+		this.subCatList=subCatList;
+	}
 	public String getCatName() {
 		return catName;
 	}
@@ -21,5 +32,6 @@ public class CategoryModel {
 	}
 	public void setSubCatList(ArrayList<SubCatModel> subCatList) {
 		this.subCatList = subCatList;
-	}	
+	}
+	
 }

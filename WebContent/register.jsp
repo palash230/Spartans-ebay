@@ -94,7 +94,7 @@ function goBack() {
 	 	<div class="form-group"> 
 			<label for="inputPassword3" class="col-sm-3 control-label">Confirm Password</label> 
 	<div class="col-sm-9">
-	<s:password id="pass2" label="Confirm Password :" key="confirm_password" onkeyup="checkPass()" />
+	<s:password  name="pass2"  id="pass2" label="Confirm Password :" key="confirm_password" onkeyup="checkPass()" />
 	<s:fielderror>
     <s:param>ConfirmPassword</s:param>
      <span id="confirmMessage" class="confirmMessage"></span>
@@ -103,12 +103,36 @@ function goBack() {
 	</div>
 	</div>
 	   <div class="form-group"> 
-		<label for="inputPassword3" class="col-sm-3 control-label">Shipping Address</label>
+		<label for="inputPassword3" class="col-sm-3 control-label">Seller Address</label>
   	<div class="col-sm-9">
 	<s:textfield label="Shipping Address :" key="sellerAdd"  name="sellerAdd"/>
 	<s:fielderror>
     <s:param>sellerAdd</s:param>
 	</s:fielderror>
+	</div>
+	</div>
+	<div class="form-group"> 
+			<label for="inputPassword3" class="col-sm-3 control-label">Email Id:</label> 
+	<div class="col-sm-9">
+	<s:textfield label="Email-Id :" key="email" />
+	</div>
+	</div>
+	<div class="form-group"> 
+			<label for="inputPassword3" class="col-sm-3 control-label">Contact No. :</label> 
+	<div class="col-sm-9">
+	<s:textfield label="Contact :" key="contact" />
+	</div>
+	</div>
+	<div class="form-group"> 
+			<label for="inputPassword3" class="col-sm-3 control-label">Nature of Business</label> 
+	<div class="col-sm-9">
+	<s:textfield label="Nature-Business :" key="nature" />
+	</div>
+	</div>
+	<div class="form-group"> 
+			<label for="inputPassword3" class="col-sm-3 control-label">Category of Product:</label> 
+	<div class="col-sm-9">
+	<s:textfield label="Category-Product :" key="catProduct" />
 	</div>
 	</div>
 	<div class="form-group last">

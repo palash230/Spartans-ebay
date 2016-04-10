@@ -1,10 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import="java.sql.*" %>
-    <%@ page import="java.util.*" %>
-    <%@ page import=" org.struts.model.ItemByCatModel" %>
-    
-    
 <%@ taglib prefix="s" uri="/struts-tags"%>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -40,20 +35,21 @@
 		  	max-height:400px;
 	  	}  
 	</style>	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="bootstrap/js/jquery-2.1.1.min.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-	<link href="owl.theme.css" rel="stylesheet" media="screen">
-	<link href="owl.carousel.css" rel="stylesheet" media="screen">
-	<script src="owl.carousel.js"></script>
-	<script src="owl.carousel.min.js"></script>
+	<link href="bootstrap/css/owl.theme.css" rel="stylesheet" media="screen">
+	<link href="bootstrap/css/owl.carousel.css" rel="stylesheet" media="screen">
+	<script src="bootstrap/js/owl.carousel.js"></script>
+	<script src="bootstrap/js/owl.carousel.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	
 </head>
 <body>
-	<div class="container">
-	    <nav class="navbar navbar-default navbar-fixed-top">
-			<div class="container-fluid">
+	
+	
+	    <nav class="navbar navbar-default navbar-fixed-top" >
+			<div class="container">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 	        			<span class="icon-bar"></span>
@@ -63,12 +59,7 @@
       				<!-- THIS IS ADDED FOR APP TYPE.. IF SMALL SCREENS SIZE -->
 					<a class="navbar-brand" href="indexCopy.jsp" class="pull-left">
 					<img src="bootstrap/Images/test.png"/>
-					</a>
-				</div>
-				<div class="header" id ="header">
-				<ul class="nav navbar-nav">
-				
-				</ul>
+					</a>																											
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
@@ -114,33 +105,56 @@
 				        </div>
 						</li>
 					</ul>
+					<ul>
+					<s:form action="report">
+				 <s:select name="reportcat" list="subCatList" listValue="catName" listKey="catId">
+                      <s:submit action="myreport" value="GenerateReport">
+                    </s:submit>                 
+                  </s:select>
+                  </s:form>
+					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="addtocart.action"> CART | </a></li>
-						<li><a href="adminLogin.jsp"> ADMIN | </a></li>
+	    				<li><a href="adminLogin.jsp"> ADMIN | </a></li>
+	    				<li><a href="Sellerid.jsp"> LabExam-02| </a></li>
 	     				<li><a href="sellerLogin.jsp"> SELLER | </a></li>
 	      				<li><a href="userLogin.jsp"> CUSTOMER | </a></li>
 					</ul>
 				</div>
 			</div>
 		</nav>
-	<!--  Modal body -->
-		<div class="modal fade" id="myModal" role="dialog">
-    		<div class="modal-dialog">   
-      		<!-- Modal content-->
-      			<div class="modal-content">
-        			<div class="modal-header">
-          			<button type="button" class="close" data-dismiss="modal">&times;</button>
-          			<h4 class="modal-title">Modal Header</h4>
-        			</div>
-        			<div class="modal-body">
-          				<p>Some text in the modal.</p>
-        			</div>
-        			<div class="modal-footer">
-          			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        			</div>
-      			</div>
-	   		</div>
-  		</div>
+		<br><br><br><br>
+		
+	<div class="row">
+		<div class="col-md-2">	
+		<a href="sign.jsp">Sign-in/Register</a>
+		</div>
+		
+		<div class="col-md-1">
+		<a href="dealsAction">Deal</a>
+		</div>
+	  	
+	  	
+	  	<div class="col-md-1">
+		<a href="construction.jsp">Sell</a>
+		</div>
+	  	<div class="col-md-2">
+		<a href="trackOrder.action">Track My Order</a>
+		</div>
+		<div class="col-md-2">
+		<a href="changeMyTrack.action">Change My Order Change</a>
+		</div>
+		<div class="col-md-1">
+		<a href="construction.jsp">My eBay</a>
+		</div>
+		<div class="col-md-1">
+		<a href="construction.jsp">My PaisaPay</a>
+		</div>
+		<div class="col-md-1">
+		<a href=""><span class="glyphicon glyphicon-bell"></span></a>
+		</div>
+		<div class="col-md-1">
+		<a href="addtocart.action"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+		</div>
 	</div>
 </body>
 </html>

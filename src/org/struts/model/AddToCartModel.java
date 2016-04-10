@@ -7,7 +7,7 @@ public class AddToCartModel {
 
 	private ArrayList<Test> itemList;
 	private String itemId,SellerId;
-	private int total_cost,cost;
+	private int total_cost,cost,quantity;
 	
 	public ArrayList<Test> getItemList() {
 		return itemList;
@@ -59,5 +59,13 @@ public class AddToCartModel {
 		this.cost = cost;
 	}
 
-	
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+		
 }

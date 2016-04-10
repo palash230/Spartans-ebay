@@ -6,17 +6,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script>
-function goBack() {
-    window.history.back();
-}
-</script>
 </head>
 <body>
 <s:action name="test" executeResult="true" />
 <br><br><br><br><br>
 Delete item error..
-<s:submit value="Previous" class="btn btn-primary" onClick="goBack()"/>
-<s:submit value="Home" action="homePageAction" name="home" class="btn btn-primary" />
 </body>
 </html>

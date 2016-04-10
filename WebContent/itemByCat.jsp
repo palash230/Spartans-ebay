@@ -41,9 +41,12 @@ function filterprice()
 	<s:hidden name="subcatId" value="%{itemSubCatId}"/>
 	<s:hidden name="catName" value="%{catName}"/>
 	<s:hidden name="subCatName" value="%{subCatName}"/>
-	Below 500  <s:checkbox name="checkMe" fieldValue="option1" label="Below 500" onclick="filterprice()"/><br>
-	500-1000   <s:checkbox name="checkMe1" fieldValue="option2" label="500-1000" onclick="filterprice()"/><br> 
-	Above 1000 <s:checkbox name="checkMe2" fieldValue="option3" label="Above 1000" onclick="filterprice()"/>
+	&nbspBelow 500  <s:checkbox name="checkMe" fieldValue="option1" label="Below 500" onclick="filterprice()"/><br>
+	&nbsp500-1000   <s:checkbox name="checkMe1" fieldValue="option2" label="500-1000" onclick="filterprice()"/><br> 
+	&nbspAbove 1000 <s:checkbox name="checkMe2" fieldValue="option3" label="Above 1000" onclick="filterprice()"/><br>
+	<label>Color</label>
+	<s:textfield id="color" name="color"></s:textfield>
+	<s:submit action="filter" value="Choosecolor"></s:submit>
 	</s:form>
 	</div>
 	
@@ -74,6 +77,7 @@ function filterprice()
 					<b>Item Description </b><s:property value="itemDesc"/><br>
 					<b>Cost </b><s:property value="cost"/> <br>
 					<b> Seller Id </b><s:property value="seller_id"/><br>
+					<b>Discount</b><s:property value="discount"/><br>
 	             	<a href="construction.jsp"><button type="button" class="btn btn-default btn-sm"><span class="glyphicon"></span>Buy Now</button></a>
 	         	    <a href="${myurl}"><button type="button" class="btn btn-default btn-sm"><span class="glyphicon"></span>Add to cart</button></a>
 	         

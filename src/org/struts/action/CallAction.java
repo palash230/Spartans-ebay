@@ -9,17 +9,17 @@ public class CallAction implements ModelDriven<CallModel> {
 	
 	public String execute()
 	{
-		//System.out.println("i m here in CallItem Action");
+		System.out.println("i m here in CallItem Action");
 		CallService cs=new CallService();
-		cs.listItemKey(cm);
+		cs.listCategory(cm);
 		return "success";
 	}
-	public String deleteSubCat()
+	/*public String deleteSubCat()
 	{
 		CallService cs=new CallService();
 		cs.listItemKey(cm);
 		return "success";
-	}
+	}*/
 	public String getDefaultValue()
 	{
 		return "N";

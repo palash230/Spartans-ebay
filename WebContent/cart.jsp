@@ -17,7 +17,6 @@ function goBack() {
 <br><br><br><br><br>
 <div class="alert alert-danger">
 <center>Page is under Construction!!!!
-<s:property value="catName"/>
 <br><br>
 <s:property value="user"/>
 </center>
