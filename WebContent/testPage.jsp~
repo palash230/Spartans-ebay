@@ -115,7 +115,7 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 	    				<li><a href="adminLogin.jsp"> ADMIN | </a></li>
-	    				<!--<li><a href="Sellerid.jsp"> LabExam-02| </a></li>-->
+	    				<li><a href="Sellerid.jsp"> LabExam-02| </a></li>
 	     				<li><a href="sellerLogin.jsp"> SELLER | </a></li>
 	      				<li><a href="userLogin.jsp"> CUSTOMER | </a></li>
 					</ul>
