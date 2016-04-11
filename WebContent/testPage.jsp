@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>    
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,7 +18,7 @@
 	  	}
 	    .navbar {
 	      margin-bottom: 0;
-	      border-radius: 0;  
+	      border-radius: 0;
 	    }
 		.dropdown-menu.multi-column .dropdown-menu {
 	        display: block !important;
@@ -33,8 +33,8 @@
 	      	margin: auto;
 	      	min-height:200px;
 		  	max-height:400px;
-	  	}  
-	</style>	
+	  	}
+	</style>
 	<script src="bootstrap/js/jquery-2.1.1.min.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -43,33 +43,33 @@
 	<script src="bootstrap/js/owl.carousel.js"></script>
 	<script src="bootstrap/js/owl.carousel.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	
+
 </head>
 <body>
-	
-	
+
+
 	    <nav class="navbar navbar-default navbar-fixed-top" >
 			<div class="container">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 	        			<span class="icon-bar"></span>
 	        			<span class="icon-bar"></span>
-	        			<span class="icon-bar"></span>                        
+	        			<span class="icon-bar"></span>
       				</button>
       				<!-- THIS IS ADDED FOR APP TYPE.. IF SMALL SCREENS SIZE -->
 					<a class="navbar-brand" href="indexCopy.jsp" class="pull-left">
 					<img src="bootstrap/Images/test.png"/>
-					</a>																											
+					</a>
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
-					<li><a href="itemManagement.jsp">Item Management</a></li> 
+					<li><a href="itemManagement.jsp">Item Management</a></li>
 					<li><a href="register.jsp">Register(Seller)</a></li>
 					<li class="dropdown">
 						<a href="#" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="true">
     					Shop by<br />Category <span class="caret"></span></a>
 					<div class="dropdown-menu multi-column">
-                     <%int count =0; %> 
+                     <%int count =0; %>
 				          <s:iterator value="subCatList" status="rowStatus">
 			              <% if(count%3==0) {%>
 			            	<div class="row">
@@ -91,7 +91,7 @@
     										<s:param name="catName"><s:property value="catName"/></s:param>
     										<s:param name="subCatName"><s:property value="value"/></s:param>
 										</s:url>
-										<li><a href="${urlTag}"><s:property value="value"/><br></a></li>	
+										<li><a href="${urlTag}"><s:property value="value"/><br></a></li>
 										</s:iterator>
 										</s:iterator>
 					  				   </ul>
@@ -101,21 +101,12 @@
 			  				   %>
 	  							</div>
 	  						<%} %>
-	  					</s:iterator>		       
+	  					</s:iterator>
 				        </div>
 						</li>
 					</ul>
-					<ul>
-					<s:form action="report">
-				 <s:select name="reportcat" list="subCatList" listValue="catName" listKey="catId">
-                      <s:submit action="myreport" value="GenerateReport">
-                    </s:submit>                 
-                  </s:select>
-                  </s:form>
-					</ul>
 					<ul class="nav navbar-nav navbar-right">
 	    				<li><a href="adminLogin.jsp"> ADMIN | </a></li>
-	    				<!--<li><a href="Sellerid.jsp"> LabExam-02| </a></li>-->
 	     				<li><a href="sellerLogin.jsp"> SELLER | </a></li>
 	      				<li><a href="userLogin.jsp"> CUSTOMER | </a></li>
 					</ul>
@@ -123,17 +114,17 @@
 			</div>
 		</nav>
 		<br><br><br><br>
-		
+
 	<div class="row">
-		<div class="col-md-2">	
+		<div class="col-md-2">
 		<a href="sign.jsp">Sign-in/Register</a>
 		</div>
-		
+
 		<div class="col-md-1">
 		<a href="dealsAction">Deal</a>
 		</div>
-	  	
-	  	
+
+
 	  	<div class="col-md-1">
 		<a href="construction.jsp">Sell</a>
 		</div>

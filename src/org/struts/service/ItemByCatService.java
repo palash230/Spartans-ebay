@@ -29,7 +29,7 @@ public class ItemByCatService {
 			
 			
 			
-			String query="SELECT itemId,item_name,item_desc,cost,seller_id069,image,imagePath,dealFlag,discount,quantity FROM item where itemCatId="+tcm.getItemCatId();
+			String query="SELECT itemId,item_name,item_desc,cost,seller_id,image,imagePath,dealFlag,discount,quantity FROM item where itemCatId="+tcm.getItemCatId();
 			
 			if(!tcm.getItemSubCatId().equals(""))
 				query+=" and subCat_id = "+tcm.getItemSubCatId();
@@ -82,14 +82,14 @@ public class ItemByCatService {
 				ConnectionPool.con=ConnectionPool.getConnection();
 			Statement stmt = ConnectionPool.con.createStatement();
 			System.out.println("it.getItemId()  "+it.getItemId());
-			String query="SELECT itemId,item_name,item_desc,cost,seller_id069,image,s.subcatId,s.categoryId,s.subcatName,c.categoryName FROM item i, category c,subcategory s ";
+			String query="SELECT itemId,item_name,item_desc,cost,seller_id,image,s.subcatId,s.categoryId,s.subcatName,c.categoryName FROM item i, category c,subcategory s ";
 			query=query+"where c.categoryId=s.categoryId  and s.subcatId=i.subCat_Id and i.itemId='"+it.getItemId()+"'";
 			ResultSet rs = stmt.executeQuery(query);
 				while (rs.next()) {
 					it.setItemName(rs.getString("item_name"));
 					it.setItemDesc(rs.getString("item_desc"));
 					it.setCost(rs.getString("cost"));
-					it.setSeller_id(rs.getString("seller_id069"));
+					it.setSeller_id(rs.getString("seller_id"));
 					Blob pic=rs.getBlob("image");
 					if(pic!=null)
 					{
